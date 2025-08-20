@@ -2,16 +2,24 @@
 
 *{
     /* width: 150px; */
-    padding: 10px;
+    /* padding: 10px;
     margin: 20px;
-    border:2px;
+    border:2px; */
+    
     /* box-sizing: border-box;  */
 }
 
 /* heading Call */
 h1 {
-    text-align: center;
-    font-size: medium;
+    /* display: flex; */
+    /* text-align: center; */
+    /* font-size: medium; */
+}
+
+.r01{
+    display: flex;
+    align-items: center;
+    font-size: 48px;
 }
 
 /* Normal Call */
@@ -28,6 +36,11 @@ div{
 /* id call */
 #header_main{
     background-color: brown;
+}
+
+#image_01{
+    border-radius: 50%;
+    border: 5px solid white;
 }
 
 /* On the Top Id  >  class  >  normal */
