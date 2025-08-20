@@ -5,12 +5,13 @@
     /* padding: 10px;
     margin: 20px;
     border:2px; */
-    
+    /* color:black; */
     /* box-sizing: border-box;  */
 }
 
 /* heading Call */
 h1 {
+    font-weight: 200px;
     /* display: flex; */
     /* text-align: center; */
     /* font-size: medium; */
@@ -22,9 +23,15 @@ h1 {
     font-size: 48px;
 }
 
+#image_01{
+    border-radius: 50%;
+    border: 5px solid black;
+}
+
+
 /* Normal Call */
 div{
-    background-color: aquamarine;
+    background-color: rgb(33, 239, 85);
 }
 
 
@@ -38,9 +45,8 @@ div{
     background-color: brown;
 }
 
-#image_01{
-    border-radius: 50%;
-    border: 5px solid white;
+.hello{
+    
 }
 
 /* On the Top Id  >  class  >  normal */
