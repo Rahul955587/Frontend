@@ -1,3 +1,32 @@
+/* Universal Selector */
+
+*{
+    /* width: 150px; */
+    padding: 10px;
+    margin: 20px;
+    border:2px;
+    /* box-sizing: border-box;  */
+}
+
+/* heading Call */
 h1 {
     text-align: center;
 }
+
+/* Normal Call */
+div{
+    background-color: aquamarine;
+}
+
+
+/* class call */
+.header{
+    background-color: aqua;
+}
+
+/* id call */
+#header_main{
+    background-color: brown;
+}
+
+/* On the Top Id  >  class  >  normal */
