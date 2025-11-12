@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div{
+            background-color: yellowgreen;
+        }
+        .red{
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <h1>Hello</h1>
+    <h1 id="name">Mam</h1>
+    <h1 class="greet">Welcome</h1>
+    <p>Hello Rahul</p>
+    <p id="qu">Hello Rahul</p>
+    <p class="que">Hello Rahul</p>
+    <p id="innertext">Rahul</p>
+    <p id="innerhtml">Rahul</p>
+    <p class="lorem">Lorem, ipsum dolor.</p>
+    <div id="box"></div>
+    <img id="roses" src="old.jpg" alt="red rose">
+    <ol>
+        <li>Avni</li>
+    </ol>
+    <div id="container">
+    <p class="text">Hello</p>
+    </div>
+    <br><br>
+    <button class="btn">Click Me</button>
+
+
+
+
+    <script>
+        //
+        document.getElementsByTagName("h1")[0].textContent="Hello!";
+        document.getElementById("name").textContent="Miss Parul";
+        document.getElementsByClassName("greet")[0].textContent="Most Welcome!";
+        //Query Selector
+        document.querySelector("p").textContent="come";
+        document.querySelector("#qu").textContent="come";
+        document.querySelector(".que").textContent="come";
+        //innerText
+        const ch=document.querySelector("#innertext");
+        ch.innerText="<b>Rahul</b> is a <b>good</b> <i>boy</i>";
+        //innerHTML
+        const chi=document.querySelector("#innerhtml");
+        chi.innerHTML="<b>Rahul</b> is a <b>good</b> <i>boy</i>";
+
+        document.querySelector(".lorem").innerText="<i>innerText<i>";
+        document.querySelector(".lorem").innerHTML="<i>innerText<i>";
+        
+        //css
+        const sq=document.querySelector("#box");
+        sq.style.height="100px";
+        sq.style.width="100px";
+        // sq.style.backgroundColor="aqua";
+        sq.style.borderRadius="15px";
+        sq.style.border="2px dotted red";
+
+        //add
+        const square=document.querySelector("#box");
+        square.classList.add("red"); //add red color
+        //remove
+        square.classList.remove("red"); // remove red color
+        //Toggle after listener
+        
+
+        // image Atteributes like src and alt set or remove
+        const r=document.querySelector("#roses");
+        r.setAttribute("src","new.jpg");
+        r.removeAttribute("alt");
+
+        //create new tags like button div paragraph h1 etc
+                    //button
+        const newbtn=document.createElement("button");
+        newbtn.textContent="Hello Bro congrats!";
+        document.body.appendChild(newbtn);
+                    //heading 1
+        const heading=document.createElement("h1");
+        heading.textContent="Good Night";
+        document.body.appendChild(heading);
+                    //paragraph
+        const p=document.createElement("p");
+        p.textContent="Rahul is a good boy";
+        document.body.appendChild(p);
+
+        //make list
+        const list=document.querySelector("ol");
+        const item=document.createElement("li");
+        item.textContent="Rahul";
+            // add at last
+        list.appendChild(item);
+        
+        const item2=document.createElement("li");
+        item2.textContent="Rah";
+            //add at first
+        list.insertBefore(item2,list.firstChild);
+        
+        //Remove from Last
+        item.remove();  //modern way
+            //old way
+        list.removeChild(item2);
+
+        
+        //Traversing the DOM
+        //You can navigate through parent, child, and sibling nodes**:
+        
+        const div = document.getElementById("container");
+
+        console.log(div.firstElementChild); // <p class="text">Hello</p>
+        console.log(div.children);         // HTMLCollection [p.text]
+        console.log(div.nextElementSibling); // next element
+        console.log(div.parentElement);    // <body>...</body>
+
+        //Events
+        const btn=document.querySelector(".btn");
+
+        // btn.addEventListener("click",function(){
+        //     alert("Clicked");
+        // });
+
+        // btn.addEventListener("mouseover",function(){
+        //     alert("Clicked");
+        // });
+
+        // btn.addEventListener("mouseout",function(){
+        //     alert("Clicked");
+        // });
+
+        
+
+
+
+
+    </script>
+</body>
+</html>

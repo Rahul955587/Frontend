@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Button Hover Example</title>
+
+  <style>
+    /* Button styling */
+    #btn {
+      background-color: red;
+      color: white;
+      margin: 50px;
+      font-size: 50px;
+      border-radius: 12px;
+      border: 3px solid blue;
+      cursor: pointer;
+      transition: 0.3s; /* smooth hover animation */
+    }
+
+    /* Hover effect */
+    #btn:hover {
+      background-color: blue;
+      border-color: red;
+      transform: scale(1.1); /* slightly enlarge on hover */
+    }
+  </style>
+</head>
+
+<body>
+  <button id="btn">Click Me</button>
+
+  <script>
+    const btn = document.getElementById("btn");
+    btn.addEventListener("click", function() {
+      alert("Button Clicked!");
+    });
+  </script>
+</body>
+</html>

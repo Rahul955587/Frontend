@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #circle{
+            height: 100px;
+            width: 100px;
+            border-radius: 50%;
+            background-color: yellow;
+            border:2px solid;
+            margin:50px;
+        }
+    </style>
+</head>
+<body>
+    <div id="circle"></div>
+    <script>
+        const cir=document.querySelector("#circle");
+        
+        cir.addEventListener("click",()=>{
+            cir.style.backgroundColor="red";
+            // cir.style.transform="scale(1)";
+        });
+
+        cir.addEventListener("mouseover",()=>{
+            cir.style.backgroundColor="blue";
+            cir.style.transform="scale(1)";
+        });
+
+        cir.addEventListener("mouseout",()=>{
+            cir.style.backgroundColor="black";
+            cir.style.transform="scale(1.2)";
+        });
+
+        cir.addEventListener("dblclick",()=>{
+            cir.style.backgroundColor="orange";
+        });
+
+    </script>
+</body>
+</html>
