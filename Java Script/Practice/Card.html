@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Company Card Generator</title>
+  
+  
+  
+  
+  
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f1f5f9;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 0;
+      padding: 20px;
+    }
+
+    h2 {
+      color: #333;
+    }
+
+    form {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      width: 300px;
+      margin-bottom: 30px;
+    }
+
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+
+    input {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 10px;
+      width: 48%;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+    }
+
+    #resetBtn {
+      background-color: #ef4444;
+      color: white;
+    }
+
+    #submitBtn {
+      background-color: #3b82f6;
+      color: white;
+      float: right;
+    }
+
+    #cardContainer {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .card {
+      background-color: white;
+      width: 250px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      text-align: center;
+      overflow: hidden;
+      transition: transform 0.2s ease;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    .card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+    }
+
+    .card h3 {
+      margin: 10px 0 5px;
+      color: #111;
+    }
+
+    .card p {
+      color: #555;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Company Information Form</h2>
+
+  <form id="companyForm">
+    <label>Enter Your Company Name:</label>
+    <input type="text" id="companyName" required>
+
+    <label>Enter Motive of Company:</label>
+    <input type="text" id="companyMotive" required>
+
+    <label>Enter Company Image URL:</label>
+    <input type="url" id="companyImage" required>
+
+    <div style="display: flex; justify-content: space-between;">
+      <button type="reset" id="resetBtn">Reset</button>
+      <button type="submit" id="submitBtn">Submit</button>
+    </div>
+  </form>
+
+  <div id="cardContainer"></div>
+
+  <script>
+    const form = document.getElementById("companyForm");
+    const cardContainer = document.getElementById("cardContainer");
+
+    form.addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      const name = document.getElementById("companyName").value;
+      const motive = document.getElementById("companyMotive").value;
+      const image = document.getElementById("companyImage").value;
+
+      const card = document.createElement("div");
+      card.classList.add("card");
+
+      card.innerHTML = `
+        <img src="${image}" alt="Company Image">
+        <h3>${name}</h3>
+        <p>${motive}</p>
+      `;
+
+      cardContainer.appendChild(card);
+      form.reset();
+    });
+  </script>
+
+</body>
+</html>
