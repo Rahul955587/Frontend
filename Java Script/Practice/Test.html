@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Quiz</title>
+
+  <style>
+    body { font-family: Arial; padding: 20px; }
+
+    .question-box {
+      margin-bottom: 18px;
+      padding: 14px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+
+    .option {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 6px 0;
+      padding: 6px;
+      border-radius: 5px;
+    }
+
+    .correct {
+      background: rgb(97, 241, 97);
+      color: white;
+    }
+
+    .wrong {
+      background: rgb(239, 67, 67);
+      color: white;
+    }
+
+    label { cursor: pointer; user-select: none; }
+  </style>
+</head>
+<body>
+
+  <h2>Quiz</h2>
+  <div id="quiz"></div>
+
+  <script>
+    const questions = [
+      { q: "Function Scope?", a: "List", b: "Var", c: "Const", d: "Let", correct: "b" },
+      { q: "Which loop runs at least once?", a: "for loop", b: "while loop", c: "do-while loop", d: "foreach loop", correct: "c" },
+      { q: "Type of 123 in JS?", a: "int", b: "float", c: "Bigint", d: "number", correct: "d" },
+      { q: "Which data type is immutable?", a: "List", b: "Set", c: "Dictionary", d: "Tuple", correct: "d" },
+      { q: "Name of Frontend Faculty?", a: "Praveen Sir", b: "Abhishek Sir", c: "Amit Sir", d: "None", correct: "b" }
+    ];
+
+    const container = document.getElementById("quiz");
+
+    questions.forEach((item, index) => {
+      const box = document.createElement("div");
+      box.className = "question-box";
+      box.innerHTML = `<h3>${index + 1}. ${item.q}</h3>`;
+
+      let answered = false;
+
+      ["a", "b", "c", "d"].forEach((key) => {
+        if (!item[key]) return;
+
+        const optDiv = document.createElement("div");
+        optDiv.className = "option";
+
+        const radio = document.createElement("input");
+        radio.type = "radio";
+        radio.name = `question-${index}`;
+        radio.id = `q${index}-${key}`;
+        radio.value = key;
+
+        const label = document.createElement("label");
+        label.htmlFor = radio.id;
+        label.textContent = item[key];
+
+        radio.addEventListener("change", (e) => {
+          if (answered) return;
+          answered = true;
+
+          const chosen = e.target.value;
+
+          if (chosen === item.correct) {
+            optDiv.classList.add("correct");
+          } else {
+            optDiv.classList.add("wrong");
+          }
+        });
+
+        optDiv.appendChild(radio);
+        optDiv.appendChild(label);
+        box.appendChild(optDiv);
+      });
+
+      container.appendChild(box);
+    });
+  </script>
+
+</body>
+</html>
