@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sequential Promises</title>
+    <style>
+        .active {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Sequential Promise Execution</h2>
+
+    <ul id="steps"></ul>
+    <button id="startBtn">Start</button>
+
+    <script>
+        function step1() {
+            return new Promise(resolve => {
+                setTimeout(() => resolve("Step 1 done"), 1000);
+            });
+        }
+
+        function step2() {
+            return new Promise(resolve => {
+                setTimeout(() => resolve("Step 2 done"), 1000);
+            });
+        }
+
+        function step3() {
+            return new Promise(resolve => {
+                setTimeout(() => resolve("Step 3 done"), 1000);
+            });
+        }
+
+        async function runSteps() {
+            let ul = document.getElementById("steps");
+            ul.innerHTML = "";
+
+            let li1 = document.createElement("li");
+            li1.innerText = "Running Step 1...";
+            li1.classList.add("active");
+            ul.appendChild(li1);
+
+            let r1 = await step1();
+            li1.innerText = r1;
+            li1.classList.remove("active");
+
+            let li2 = document.createElement("li");
+            li2.innerText = "Running Step 2...";
+            li2.classList.add("active");
+            ul.appendChild(li2);
+
+            let r2 = await step2();
+            li2.innerText = r2;
+            li2.classList.remove("active");
+
+            let li3 = document.createElement("li");
+            li3.innerText = "Running Step 3...";
+            li3.classList.add("active");
+            ul.appendChild(li3);
+
+            let r3 = await step3();
+            li3.innerText = r3;
+            li3.classList.remove("active");
+        }
+
+        document.getElementById("startBtn").onclick = runSteps;
+    </script>
+
+</body>
+</html>
