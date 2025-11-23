@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Product Search Filter</title>
+    <style>
+        #products {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .item {
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+        input {
+            padding: 8px;
+            width: 250px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Product Search Filter</h2>
+
+    <input type="text" id="search" placeholder="Search products...">
+    <div id="products"></div>
+
+    <script>
+        let allProducts = [];
+
+        function debounce(func, delay) {
+            let timer;
+            return function() {
+                clearTimeout(timer);
+                timer = setTimeout(() => func(), delay);
+            };
+        }
+
+        async function fetchProducts() {
+            let res = await fetch("https://fakestoreapi.com/products");
+            let data = await res.json();
+            allProducts = data;
+            displayProducts(allProducts);
+        }
+
+        function displayProducts(list) {
+            let box = document.getElementById("products");
+            box.innerHTML = "";
+            list.forEach(p => {
+                let div = document.createElement("div");
+                div.className = "item";
+                div.innerHTML = p.title + "<br>₹" + p.price;
+                box.appendChild(div);
+            });
+        }
+
+        function searchProducts() {
+            let q = document.getElementById("search").value.toLowerCase();
+            let filtered = allProducts.filter(item =>
+                item.title.toLowerCase().includes(q)
+            );
+            displayProducts(filtered);
+        }
+
+        let debouncedSearch = debounce(searchProducts, 400);
+
+        document.getElementById("search").addEventListener("input", debouncedSearch);
+
+        fetchProducts();
+    </script>
+
+</body>
+</html>
