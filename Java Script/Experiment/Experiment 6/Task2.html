@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>To-Do App</title>
+</head>
+<body>
+
+<input type="text" id="todoInput">
+<button onclick="addItem()">Add</button>
+
+<ul id="todoList"></ul>
+
+<script>
+function addItem() {
+  let input = document.getElementById("todoInput");
+  let value = input.value;
+  if (value === "") return;
+
+  let li = document.createElement("li");
+  li.textContent = value;
+
+  let btn = document.createElement("button");
+  btn.textContent = "Delete";
+  btn.onclick = function () {
+    li.remove();
+  };
+
+  li.appendChild(btn);
+  document.getElementById("todoList").appendChild(li);
+  input.value = "";
+}
+</script>
+
+</body>
+</html>
