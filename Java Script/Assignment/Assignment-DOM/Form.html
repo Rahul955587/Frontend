@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Validation</title>
+</head>
+<body>
+
+    <h2>Registration Form</h2>
+
+    <form id="regForm">
+        <label>Name:</label><br>
+        <input type="text" id="nameField"><br>
+        <span id="nameError" style="color:red;"></span><br>
+
+        <label>Email:</label><br>
+        <input type="text" id="emailField"><br>
+        <span id="emailError" style="color:red;"></span><br>
+
+        <label>Password:</label><br>
+        <input type="password" id="passField"><br>
+        <span id="passError" style="color:red;"></span><br><br>
+
+        <button type="submit">Register</button>
+    </form>
+
+    <script>
+        let form = document.getElementById("regForm");
+
+        let nameField = document.getElementById("nameField");
+        let emailField = document.getElementById("emailField");
+        let passField = document.getElementById("passField");
+
+        let nameError = document.getElementById("nameError");
+        let emailError = document.getElementById("emailError");
+        let passError = document.getElementById("passError");
+
+        form.onsubmit = function(e) {
+            e.preventDefault();
+
+            let nameVal = nameField.value.trim();
+            let emailVal = emailField.value.trim();
+            let passVal = passField.value.trim();
+
+            let valid = true;
+
+            if (nameVal === "") {
+                nameError.textContent = "Name is required";
+                nameField.style.border = "2px solid red";
+                valid = false;
+            } else {
+                nameError.textContent = "";
+                nameField.style.border = "2px solid green";
+            }
+
+            if (emailVal === "" || emailVal.indexOf("@") === -1) {
+                emailError.textContent = "Enter a valid email";
+                emailField.style.border = "2px solid red";
+                valid = false;
+            } else {
+                emailError.textContent = "";
+                emailField.style.border = "2px solid green";
+            }
+
+            if (passVal.length < 8) {
+                passError.textContent = "Password must be at least 8 characters";
+                passField.style.border = "2px solid red";
+                valid = false;
+            } else {
+                passError.textContent = "";
+                passField.style.border = "2px solid green";
+            }
+
+            if (valid) {
+                alert("Form submitted successfully!");
+            }
+        };
+    </script>
+
+</body>
+</html>
